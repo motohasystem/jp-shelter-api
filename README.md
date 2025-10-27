@@ -18,6 +18,15 @@ https://motohasystem.github.io/jp-shelter-api/api/v0/{type}/{cityCode}.json
 - `{type}`: `evacuation` (指定避難所) または `emergency` (緊急避難所)
 - `{cityCode}`: 6桁の団体コード (例: `011002` = 北海道札幌市)
 
+### マスターデータAPI
+
+団体コードと市区町村名の変換に使用できるマスターデータも提供しています。以下のURLから直接アクセス可能です：
+
+- **code-to-city.json**: 団体コードから市区町村名を引くためのデータ（階層構造）
+  - https://motohasystem.github.io/jp-shelter-api/api/v0/code-to-city.json
+- **city-to-code.json**: 市区町村名から団体コードを引くためのデータ（逆引き用）
+  - https://motohasystem.github.io/jp-shelter-api/api/v0/city-to-code.json
+
 ## データの出典
 
 このツールは、以下の公的データを使用しています。
