@@ -1,0 +1,20 @@
+{
+  "name": "geojson-splitter",
+  "version": "1.0.0",
+  "description": "GeoJSONファイルを都道府県名及び市町村名で分類するツール",
+  "main": "split-geojson.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node split-geojson.js"
+  },
+  "keywords": ["geojson", "split", "災害", "避難所"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
