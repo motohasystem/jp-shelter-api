@@ -4,6 +4,8 @@ package-lock.json
 
 # Compiled JavaScript files (TypeScript compilation output)
 *.js
+# But allow docs JavaScript files (tutorial widget library)
+!docs/**/*.js
 
 # Exclude unknown.json (temporary file for unmatched data)
 unknown.json

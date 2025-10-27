@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japan Shelter API - 避難所データ検索</title>
+  <link rel="stylesheet" href="tutorial-widget.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .main-content {
+      padding: 40px;
+    }
+
+    .search-section {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .search-section h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    #search-input {
+      flex: 1;
+      padding: 12px 20px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    #search-input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .btn-secondary:hover {
+      box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
+    }
+
+    .search-hint {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .results-section {
+      margin-top: 30px;
+    }
+
+    .results-section h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+      display: none;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error-message {
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .info-message {
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
+      color: #0c5460;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    .city-info {
+      background: #e7f3ff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .city-info h3 {
+      color: #004085;
+      margin-bottom: 10px;
+    }
+
+    .city-info p {
+      color: #004085;
+      margin: 5px 0;
+    }
+
+    .shelter-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .shelter-card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .shelter-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .shelter-card h4 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
+    .shelter-card p {
+      color: #666;
+      font-size: 0.9em;
+      margin: 5px 0;
+    }
+
+    .disaster-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .disaster-badge {
+      background: #667eea;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.8em;
+      font-weight: 600;
+    }
+
+    footer {
+      background: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+
+    footer p {
+      color: #666;
+      margin: 10px 0;
+    }
+
+    footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .tutorial-controls {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .main-content {
+        padding: 20px;
+      }
+
+      .search-form {
+        flex-direction: column;
+      }
+
+      .shelter-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Japan Shelter API</h1>
+      <p>全国の避難所データを検索・取得できるAPIデモサイト</p>
+    </header>
+
+    <div class="main-content">
+      <section class="search-section">
+        <h2>避難所データを検索</h2>
+        <div class="search-form">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="市区町村名を入力してください（例：札幌市、千代田区）"
+          />
+          <button class="btn" onclick="searchShelter()">検索</button>
+        </div>
+        <div class="search-hint">
+          例：札幌市、千代田区、大阪市、福岡市など
+        </div>
+      </section>
+
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>データを読み込んでいます...</p>
+      </div>
+
+      <div class="error-message" id="error-message"></div>
+
+      <section class="results-section" id="results-section" style="display: none;">
+        <div id="results-content"></div>
+      </section>
+
+      <section class="api-info">
+        <h2>APIについて</h2>
+        <div class="info-message">
+          <p><strong>このAPIは以下のエンドポイントを提供しています：</strong></p>
+          <ul style="margin-top: 10px; margin-left: 20px;">
+            <li><code>api/v0/evacuation/{cityCode}.json</code> - 指定避難所データ</li>
+            <li><code>api/v0/emergency/{cityCode}.json</code> - 緊急避難所データ</li>
+            <li><code>api/v0/code-to-city.json</code> - 市区町村コードマスター</li>
+            <li><code>api/v0/city-to-code.json</code> - 市区町村名から団体コードへの変換</li>
+            <li><code>api/v0/data-availability.json</code> - データ可用性情報</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        <strong>Japan Shelter API</strong> - 国土地理院公開データを元に作成
+      </p>
+      <p>
+        <a href="https://github.com/motohasystem/jp-shelter-api" target="_blank">GitHub リポジトリ</a> |
+        データ出典: <a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank">国土地理院</a>
+      </p>
+      <div class="tutorial-controls">
+        <button class="btn btn-secondary" onclick="resetAndShowTutorial()">チュートリアルを再表示</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="tutorial-widget.js"></script>
+  <script>
+    let cityToCodeData = null;
+
+    // ページ読み込み時にチュートリアルを初期化
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 市区町村マスターデータを読み込み
+      try {
+        const response = await fetch('api/v0/city-to-code.json');
+        cityToCodeData = await response.json();
+      } catch (error) {
+        console.error('Failed to load city-to-code data:', error);
+      }
+
+      // チュートリアルウィジェットを初期化
+      const widget = new TutorialWidget({
+        configUrl: 'tutorial-config.json',
+        storageKey: 'jp-shelter-api-tutorial-dismissed'
+      });
+      await widget.init();
+    });
+
+    // 避難所データを検索
+    async function searchShelter() {
+      const searchInput = document.getElementById('search-input');
+      const cityName = searchInput.value.trim();
+
+      if (!cityName) {
+        showError('市区町村名を入力してください');
+        return;
+      }
+
+      hideError();
+      showLoading();
+
+      try {
+        // 市区町村名から団体コードを検索
+        const cityCode = findCityCode(cityName);
+
+        if (!cityCode) {
+          showError(`「${cityName}」に該当する市区町村が見つかりませんでした。`);
+          hideLoading();
+          return;
+        }
+
+        // 避難所データを取得
+        const [evacuationData, emergencyData] = await Promise.all([
+          fetchShelterData('evacuation', cityCode),
+          fetchShelterData('emergency', cityCode)
+        ]);
+
+        hideLoading();
+        displayResults(cityName, cityCode, evacuationData, emergencyData);
+      } catch (error) {
+        hideLoading();
+        showError('データの取得に失敗しました: ' + error.message);
+      }
+    }
+
+    // 市区町村名から団体コードを検索
+    function findCityCode(cityName) {
+      if (!cityToCodeData) return null;
+
+      // 完全一致を試す
+      for (const [key, code] of Object.entries(cityToCodeData)) {
+        if (key.includes(cityName)) {
+          return code;
+        }
+      }
+
+      return null;
+    }
+
+    // 避難所データを取得
+    async function fetchShelterData(type, cityCode) {
+      try {
+        const response = await fetch(`api/v0/${type}/${cityCode}.json`);
+        if (!response.ok) {
+          return null;
+        }
+        const data = await response.json();
+
+        // unavailableレスポンスの場合
+        if (data.type === 'unavailable') {
+          return { unavailable: true, message: data.message };
+        }
+
+        return data;
+      } catch (error) {
+        console.error(`Failed to fetch ${type} data:`, error);
+        return null;
+      }
+    }
+
+    // 結果を表示
+    function displayResults(cityName, cityCode, evacuationData, emergencyData) {
+      const resultsSection = document.getElementById('results-section');
+      const resultsContent = document.getElementById('results-content');
+
+      let html = `
+        <div class="city-info">
+          <h3>${cityName}</h3>
+          <p>団体コード: ${cityCode}</p>
+        </div>
+      `;
+
+      // 指定避難所データ
+      html += '<h3>指定避難所</h3>';
+      if (evacuationData && evacuationData.unavailable) {
+        html += `<div class="info-message">${evacuationData.message}</div>`;
+      } else if (evacuationData && evacuationData.features) {
+        html += `<p>件数: ${evacuationData.features.length}件</p>`;
+        html += '<div class="shelter-list">';
+        evacuationData.features.slice(0, 10).forEach(feature => {
+          html += createShelterCard(feature);
+        });
+        html += '</div>';
+        if (evacuationData.features.length > 10) {
+          html += `<p style="margin-top: 20px; color: #666;">※ 最初の10件を表示しています（全${evacuationData.features.length}件）</p>`;
+        }
+      } else {
+        html += '<div class="info-message">指定避難所データは利用できません</div>';
+      }
+
+      // 緊急避難所データ
+      html += '<h3 style="margin-top: 30px;">緊急避難所</h3>';
+      if (emergencyData && emergencyData.unavailable) {
+        html += `<div class="info-message">${emergencyData.message}</div>`;
+      } else if (emergencyData && emergencyData.features) {
+        html += `<p>件数: ${emergencyData.features.length}件</p>`;
+        html += '<div class="shelter-list">';
+        emergencyData.features.slice(0, 10).forEach(feature => {
+          html += createShelterCard(feature);
+        });
+        html += '</div>';
+        if (emergencyData.features.length > 10) {
+          html += `<p style="margin-top: 20px; color: #666;">※ 最初の10件を表示しています（全${emergencyData.features.length}件）</p>`;
+        }
+      } else {
+        html += '<div class="info-message">緊急避難所データは利用できません</div>';
+      }
+
+      resultsContent.innerHTML = html;
+      resultsSection.style.display = 'block';
+    }
+
+    // 避難所カードを作成
+    function createShelterCard(feature) {
+      const props = feature.properties;
+      const name = props['施設・場所名'] || '名称不明';
+      const address = props['住所'] || '住所不明';
+
+      let disasters = [];
+      if (props['洪水'] === '○') disasters.push('洪水');
+      if (props['津波'] === '○') disasters.push('津波');
+      if (props['地震'] === '○') disasters.push('地震');
+      if (props['土砂災害'] === '○') disasters.push('土砂災害');
+
+      let card = `
+        <div class="shelter-card">
+          <h4>${name}</h4>
+          <p>${address}</p>
+      `;
+
+      if (disasters.length > 0) {
+        card += '<div class="disaster-types">';
+        disasters.forEach(disaster => {
+          card += `<span class="disaster-badge">${disaster}</span>`;
+        });
+        card += '</div>';
+      }
+
+      card += '</div>';
+      return card;
+    }
+
+    // ローディング表示
+    function showLoading() {
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('results-section').style.display = 'none';
+    }
+
+    function hideLoading() {
+      document.getElementById('loading').style.display = 'none';
+    }
+
+    // エラーメッセージ表示
+    function showError(message) {
+      const errorElement = document.getElementById('error-message');
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+
+    function hideError() {
+      document.getElementById('error-message').style.display = 'none';
+    }
+
+    // チュートリアルをリセットして再表示
+    function resetAndShowTutorial() {
+      TutorialWidget.reset('jp-shelter-api-tutorial-dismissed');
+      const widget = new TutorialWidget({
+        configUrl: 'tutorial-config.json',
+        storageKey: 'jp-shelter-api-tutorial-dismissed'
+      });
+      widget.init();
+    }
+  </script>
+</body>
+</html>
