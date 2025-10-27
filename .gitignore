@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Compiled JavaScript files (TypeScript compilation output)
+*.js
+
+# Exclude unknown.json (temporary file for unmatched data)
+unknown.json
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store

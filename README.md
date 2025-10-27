@@ -27,6 +27,50 @@ https://motohasystem.github.io/jp-shelter-api/api/v0/{type}/{cityCode}.json
 - **city-to-code.json**: 市区町村名から団体コードを引くためのデータ（逆引き用）
   - https://motohasystem.github.io/jp-shelter-api/api/v0/city-to-code.json
 
+### データ可用性API
+
+避難所情報を公開していない自治体を確認できるAPIを提供しています：
+
+- **data-availability.json**: 避難所データが存在しない自治体のリスト
+  - https://motohasystem.github.io/jp-shelter-api/api/v0/data-availability.json
+
+このAPIは、全国の自治体について指定避難所と緊急避難所のデータの有無をチェックし、以下の情報を返します：
+
+- **unavailable.both**: 指定避難所・緊急避難所の両方のデータがない自治体
+- **unavailable.evacuationOnly**: 指定避難所のデータのみがない自治体
+- **unavailable.emergencyOnly**: 緊急避難所のデータのみがない自治体
+- **summary**: 統計情報（総自治体数、データあり/なしの件数など）
+
+データ構造例：
+```json
+{
+  "unavailable": {
+    "both": [
+      {
+        "code": "111015",
+        "name": "埼玉県さいたま市西区",
+        "evacuation": false,
+        "emergency": false
+      }
+    ],
+    "evacuationOnly": [...],
+    "emergencyOnly": [...]
+  },
+  "summary": {
+    "total": 1917,
+    "available": 1722,
+    "unavailable": 195,
+    "bothMissing": 195,
+    "evacuationMissing": 10,
+    "emergencyMissing": 28,
+    "evacuationTotal": 1712,
+    "emergencyTotal": 1694
+  }
+}
+```
+
+**注意**: 政令指定都市の区（例：さいたま市西区、千葉市中央区など）は、市全体としてデータが提供されている場合があります。
+
 ## データの出典
 
 このツールは、以下の公的データを使用しています。
@@ -273,6 +317,10 @@ output/
   - `code-to-city.json`: 都道府県と市区町村の親子関係を持つ階層構造JSON
   - `city-to-code.json`: フルネーム（都道府県名+市区町村名）から団体コードを検索できる逆引きJSON
   - 全シート（通常の市区町村 + 政令指定都市）を処理
+- `check-data-availability.ts` - 避難所データの可用性をチェックするツール
+  - 全自治体について指定避難所と緊急避難所のデータの有無を確認
+  - データが存在しない自治体のリストをJSON形式で生成
+  - `data-availability.json`を`docs/api/v0/`ディレクトリに出力
 - `package.json` - プロジェクト設定と依存パッケージ
 - `tsconfig.json` - TypeScript設定
 
