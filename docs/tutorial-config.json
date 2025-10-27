@@ -1,0 +1,17 @@
+{
+  "pages": [
+    {
+      "url": "pages/page1.html"
+    },
+    {
+      "url": "pages/page2.html",
+      "highlightId": "search-input"
+    },
+    {
+      "url": "pages/page3.html"
+    },
+    {
+      "url": "pages/page4.html"
+    }
+  ]
+}

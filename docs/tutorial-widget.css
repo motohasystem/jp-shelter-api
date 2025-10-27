@@ -1,0 +1,316 @@
+/**
+ * Tutorial Widget Styles
+ */
+
+/* オーバーレイ */
+.tutorial-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: tutorial-widget-fade-in 0.3s ease-out;
+}
+
+@keyframes tutorial-widget-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* モーダル本体 */
+.tutorial-widget-modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: tutorial-widget-slide-up 0.3s ease-out;
+}
+
+@keyframes tutorial-widget-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 閉じるボタン */
+.tutorial-widget-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  z-index: 1;
+}
+
+.tutorial-widget-close:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* コンテンツエリア */
+.tutorial-widget-content {
+  padding: 40px 32px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.tutorial-widget-content h1,
+.tutorial-widget-content h2,
+.tutorial-widget-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.tutorial-widget-content p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.tutorial-widget-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* フッター */
+.tutorial-widget-footer {
+  padding: 16px 32px 24px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+/* チェックボックス */
+.tutorial-widget-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  color: #666;
+  font-size: 14px;
+}
+
+.tutorial-widget-checkbox input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.tutorial-widget-checkbox:hover {
+  color: #333;
+}
+
+/* ナビゲーションボタン */
+.tutorial-widget-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.tutorial-widget-nav-btn {
+  padding: 10px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 100px;
+}
+
+.tutorial-widget-nav-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.tutorial-widget-nav-btn:active {
+  transform: translateY(0);
+}
+
+/* ハイライト機能用のスタイル */
+/* ハイライトオーバーレイ（画面全体をグレーアウト） */
+.tutorial-widget-highlight-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  pointer-events: none;
+  animation: tutorial-widget-fade-in 0.3s ease-out;
+}
+
+/* ハイライトされた要素のマーカー */
+.tutorial-widget-highlight-box {
+  position: absolute;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3),
+              0 0 0 9999px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 10001;
+  animation: tutorial-widget-highlight-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tutorial-widget-highlight-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3),
+                0 0 0 9999px rgba(0, 0, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.5),
+                0 0 0 9999px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* 吹き出し形式のツールチップモーダル */
+.tutorial-widget-tooltip {
+  position: fixed;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  z-index: 10002;
+  animation: tutorial-widget-slide-up 0.3s ease-out;
+}
+
+/* ツールチップの矢印 */
+.tutorial-widget-tooltip::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* 矢印の位置（上） */
+.tutorial-widget-tooltip.arrow-top::before {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent white transparent;
+}
+
+/* 矢印の位置（下） */
+.tutorial-widget-tooltip.arrow-bottom::before {
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0 10px;
+  border-color: white transparent transparent transparent;
+}
+
+/* 矢印の位置（左） */
+.tutorial-widget-tooltip.arrow-left::before {
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* 矢印の位置（右） */
+.tutorial-widget-tooltip.arrow-right::before {
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* ツールチップモード時のコンテンツエリア */
+.tutorial-widget-tooltip .tutorial-widget-content {
+  padding: 24px 24px 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* ツールチップモード時の閉じるボタン */
+.tutorial-widget-tooltip .tutorial-widget-close {
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+}
+
+/* ツールチップモード時のフッター */
+.tutorial-widget-tooltip .tutorial-widget-footer {
+  padding: 12px 24px 20px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .tutorial-widget-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .tutorial-widget-content {
+    padding: 32px 20px 16px;
+  }
+
+  .tutorial-widget-footer {
+    padding: 12px 20px 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tutorial-widget-buttons {
+    justify-content: stretch;
+  }
+
+  .tutorial-widget-nav-btn {
+    width: 100%;
+  }
+
+  .tutorial-widget-checkbox {
+    justify-content: center;
+  }
+
+  .tutorial-widget-tooltip {
+    max-width: 90%;
+  }
+
+  .tutorial-widget-tooltip .tutorial-widget-content {
+    padding: 20px 16px 12px;
+  }
+
+  .tutorial-widget-tooltip .tutorial-widget-footer {
+    padding: 12px 16px 16px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
