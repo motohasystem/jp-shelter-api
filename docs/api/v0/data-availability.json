@@ -1,0 +1,1418 @@
+{
+  "unavailable": {
+    "both": [
+      {
+        "code": "111015",
+        "name": "埼玉県さいたま市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111023",
+        "name": "埼玉県さいたま市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111031",
+        "name": "埼玉県さいたま市大宮区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111040",
+        "name": "埼玉県さいたま市見沼区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111058",
+        "name": "埼玉県さいたま市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111066",
+        "name": "埼玉県さいたま市桜区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111074",
+        "name": "埼玉県さいたま市浦和区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111082",
+        "name": "埼玉県さいたま市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111091",
+        "name": "埼玉県さいたま市緑区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "111104",
+        "name": "埼玉県さいたま市岩槻区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "121011",
+        "name": "千葉県千葉市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "121029",
+        "name": "千葉県千葉市花見川区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "121037",
+        "name": "千葉県千葉市稲毛区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "121045",
+        "name": "千葉県千葉市若葉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "121053",
+        "name": "千葉県千葉市緑区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "121061",
+        "name": "千葉県千葉市美浜区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "133086",
+        "name": "東京都奥多摩町",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "134023",
+        "name": "東京都青ヶ島村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141011",
+        "name": "神奈川県横浜市鶴見区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141020",
+        "name": "神奈川県横浜市神奈川区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141038",
+        "name": "神奈川県横浜市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141046",
+        "name": "神奈川県横浜市中区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141054",
+        "name": "神奈川県横浜市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141062",
+        "name": "神奈川県横浜市保土ケ谷区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141071",
+        "name": "神奈川県横浜市磯子区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141089",
+        "name": "神奈川県横浜市金沢区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141097",
+        "name": "神奈川県横浜市港北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141101",
+        "name": "神奈川県横浜市戸塚区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141119",
+        "name": "神奈川県横浜市港南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141127",
+        "name": "神奈川県横浜市旭区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141135",
+        "name": "神奈川県横浜市緑区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141143",
+        "name": "神奈川県横浜市瀬谷区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141151",
+        "name": "神奈川県横浜市栄区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141160",
+        "name": "神奈川県横浜市泉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141178",
+        "name": "神奈川県横浜市青葉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141186",
+        "name": "神奈川県横浜市都筑区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141313",
+        "name": "神奈川県川崎市川崎区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141321",
+        "name": "神奈川県川崎市幸区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141330",
+        "name": "神奈川県川崎市中原区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141348",
+        "name": "神奈川県川崎市高津区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141356",
+        "name": "神奈川県川崎市多摩区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141364",
+        "name": "神奈川県川崎市宮前区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141372",
+        "name": "神奈川県川崎市麻生区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141518",
+        "name": "神奈川県相模原市緑区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141526",
+        "name": "神奈川県相模原市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "141534",
+        "name": "神奈川県相模原市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "142140",
+        "name": "神奈川県伊勢原市",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "143219",
+        "name": "神奈川県寒川町",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "143642",
+        "name": "神奈川県山北町",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151017",
+        "name": "新潟県新潟市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151025",
+        "name": "新潟県新潟市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151033",
+        "name": "新潟県新潟市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151041",
+        "name": "新潟県新潟市江南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151050",
+        "name": "新潟県新潟市秋葉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151068",
+        "name": "新潟県新潟市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151076",
+        "name": "新潟県新潟市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "151084",
+        "name": "新潟県新潟市西蒲区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "153851",
+        "name": "新潟県阿賀町",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "154822",
+        "name": "新潟県津南町",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "163210",
+        "name": "富山県舟橋村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "204102",
+        "name": "長野県根羽村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "204129",
+        "name": "長野県売木村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "221015",
+        "name": "静岡県静岡市葵区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "221023",
+        "name": "静岡県静岡市駿河区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "221031",
+        "name": "静岡県静岡市清水区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "221384",
+        "name": "静岡県浜松市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "221392",
+        "name": "静岡県浜松市浜名区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "221406",
+        "name": "静岡県浜松市天竜区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231011",
+        "name": "愛知県名古屋市千種区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231029",
+        "name": "愛知県名古屋市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231037",
+        "name": "愛知県名古屋市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231045",
+        "name": "愛知県名古屋市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231053",
+        "name": "愛知県名古屋市中村区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231061",
+        "name": "愛知県名古屋市中区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231070",
+        "name": "愛知県名古屋市昭和区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231088",
+        "name": "愛知県名古屋市瑞穂区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231096",
+        "name": "愛知県名古屋市熱田区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231100",
+        "name": "愛知県名古屋市中川区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231118",
+        "name": "愛知県名古屋市港区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231126",
+        "name": "愛知県名古屋市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231134",
+        "name": "愛知県名古屋市守山区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231142",
+        "name": "愛知県名古屋市緑区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231151",
+        "name": "愛知県名古屋市名東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "231169",
+        "name": "愛知県名古屋市天白区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "252042",
+        "name": "滋賀県近江八幡市",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261017",
+        "name": "京都府京都市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261025",
+        "name": "京都府京都市上京区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261033",
+        "name": "京都府京都市左京区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261041",
+        "name": "京都府京都市中京区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261050",
+        "name": "京都府京都市東山区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261068",
+        "name": "京都府京都市下京区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261076",
+        "name": "京都府京都市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261084",
+        "name": "京都府京都市右京区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261092",
+        "name": "京都府京都市伏見区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261106",
+        "name": "京都府京都市山科区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "261114",
+        "name": "京都府京都市西京区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271021",
+        "name": "大阪府大阪市都島区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271039",
+        "name": "大阪府大阪市福島区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271047",
+        "name": "大阪府大阪市此花区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271063",
+        "name": "大阪府大阪市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271071",
+        "name": "大阪府大阪市港区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271080",
+        "name": "大阪府大阪市大正区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271098",
+        "name": "大阪府大阪市天王寺区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271110",
+        "name": "大阪府大阪市浪速区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271136",
+        "name": "大阪府大阪市西淀川区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271144",
+        "name": "大阪府大阪市東淀川区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271152",
+        "name": "大阪府大阪市東成区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271161",
+        "name": "大阪府大阪市生野区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271179",
+        "name": "大阪府大阪市旭区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271187",
+        "name": "大阪府大阪市城東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271195",
+        "name": "大阪府大阪市阿倍野区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271209",
+        "name": "大阪府大阪市住吉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271217",
+        "name": "大阪府大阪市東住吉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271225",
+        "name": "大阪府大阪市西成区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271233",
+        "name": "大阪府大阪市淀川区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271241",
+        "name": "大阪府大阪市鶴見区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271250",
+        "name": "大阪府大阪市住之江区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271268",
+        "name": "大阪府大阪市平野区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271276",
+        "name": "大阪府大阪市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271284",
+        "name": "大阪府大阪市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271411",
+        "name": "大阪府堺市堺区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271420",
+        "name": "大阪府堺市中区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271438",
+        "name": "大阪府堺市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271446",
+        "name": "大阪府堺市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271454",
+        "name": "大阪府堺市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271462",
+        "name": "大阪府堺市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "271471",
+        "name": "大阪府堺市美原区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281018",
+        "name": "兵庫県神戸市東灘区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281026",
+        "name": "兵庫県神戸市灘区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281051",
+        "name": "兵庫県神戸市兵庫区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281069",
+        "name": "兵庫県神戸市長田区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281077",
+        "name": "兵庫県神戸市須磨区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281085",
+        "name": "兵庫県神戸市垂水区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281093",
+        "name": "兵庫県神戸市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281107",
+        "name": "兵庫県神戸市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "281115",
+        "name": "兵庫県神戸市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "331015",
+        "name": "岡山県岡山市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "331023",
+        "name": "岡山県岡山市中区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "331031",
+        "name": "岡山県岡山市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "331040",
+        "name": "岡山県岡山市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341011",
+        "name": "広島県広島市中区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341029",
+        "name": "広島県広島市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341037",
+        "name": "広島県広島市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341045",
+        "name": "広島県広島市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341053",
+        "name": "広島県広島市安佐南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341061",
+        "name": "広島県広島市安佐北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341070",
+        "name": "広島県広島市安芸区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "341088",
+        "name": "広島県広島市佐伯区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401013",
+        "name": "福岡県北九州市門司区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401030",
+        "name": "福岡県北九州市若松区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401056",
+        "name": "福岡県北九州市戸畑区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401064",
+        "name": "福岡県北九州市小倉北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401072",
+        "name": "福岡県北九州市小倉南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401081",
+        "name": "福岡県北九州市八幡東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401099",
+        "name": "福岡県北九州市八幡西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401315",
+        "name": "福岡県福岡市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401323",
+        "name": "福岡県福岡市博多区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401331",
+        "name": "福岡県福岡市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401340",
+        "name": "福岡県福岡市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401358",
+        "name": "福岡県福岡市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401366",
+        "name": "福岡県福岡市城南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "401374",
+        "name": "福岡県福岡市早良区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "431010",
+        "name": "熊本県熊本市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "431028",
+        "name": "熊本県熊本市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "431036",
+        "name": "熊本県熊本市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "431044",
+        "name": "熊本県熊本市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "431052",
+        "name": "熊本県熊本市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "473154",
+        "name": "沖縄県伊江村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "473537",
+        "name": "沖縄県渡嘉敷村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "473545",
+        "name": "沖縄県座間味村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "473570",
+        "name": "沖縄県南大東村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "473596",
+        "name": "沖縄県伊平屋村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "473812",
+        "name": "沖縄県竹富町",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011011",
+        "name": "北海道札幌市中央区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011029",
+        "name": "北海道札幌市北区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011037",
+        "name": "北海道札幌市東区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011045",
+        "name": "北海道札幌市白石区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011053",
+        "name": "北海道札幌市豊平区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011061",
+        "name": "北海道札幌市南区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011070",
+        "name": "北海道札幌市西区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011088",
+        "name": "北海道札幌市厚別区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011096",
+        "name": "北海道札幌市手稲区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "011100",
+        "name": "北海道札幌市清田区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "016951",
+        "name": "北海道色丹村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "016977",
+        "name": "北海道留夜別村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "016985",
+        "name": "北海道留別村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "016993",
+        "name": "北海道紗那村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "017001",
+        "name": "北海道蘂取村",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "023612",
+        "name": "青森県藤崎町",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "041017",
+        "name": "宮城県仙台市青葉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "041025",
+        "name": "宮城県仙台市宮城野区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "041033",
+        "name": "宮城県仙台市若林区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "041041",
+        "name": "宮城県仙台市太白区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "041050",
+        "name": "宮城県仙台市泉区",
+        "evacuation": false,
+        "emergency": false
+      },
+      {
+        "code": "075469",
+        "name": "福島県双葉町",
+        "evacuation": false,
+        "emergency": false
+      }
+    ],
+    "evacuationOnly": [
+      {
+        "code": "131199",
+        "name": "東京都板橋区",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "133639",
+        "name": "東京都新島村",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "254428",
+        "name": "滋賀県甲良町",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "313840",
+        "name": "鳥取県日吉津村",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "343684",
+        "name": "広島県安芸太田町",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "011002",
+        "name": "北海道札幌市",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "012254",
+        "name": "北海道滝川市",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "014621",
+        "name": "北海道南富良野町",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "015849",
+        "name": "北海道洞爺湖町",
+        "evacuation": false,
+        "emergency": true
+      },
+      {
+        "code": "063649",
+        "name": "山形県真室川町",
+        "evacuation": false,
+        "emergency": true
+      }
+    ],
+    "emergencyOnly": [
+      {
+        "code": "131075",
+        "name": "東京都墨田区",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "131083",
+        "name": "東京都江東区",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "131130",
+        "name": "東京都渋谷区",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "131148",
+        "name": "東京都中野区",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "131229",
+        "name": "東京都葛飾区",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "132039",
+        "name": "東京都武蔵野市",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "133621",
+        "name": "東京都利島村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "142042",
+        "name": "神奈川県鎌倉市",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "143626",
+        "name": "神奈川県大井町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "143634",
+        "name": "神奈川県松田町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "155047",
+        "name": "新潟県刈羽村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "192139",
+        "name": "山梨県甲州市",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "192147",
+        "name": "山梨県中央市",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "193640",
+        "name": "山梨県早川町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "194425",
+        "name": "山梨県小菅村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "194433",
+        "name": "山梨県丹波山村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "203505",
+        "name": "長野県長和町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "203831",
+        "name": "長野県箕輪町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "393444",
+        "name": "高知県大豊町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "393631",
+        "name": "高知県土佐町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "393649",
+        "name": "高知県大川村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "453617",
+        "name": "宮崎県高原町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "453820",
+        "name": "宮崎県国富町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "454419",
+        "name": "宮崎県高千穂町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "473286",
+        "name": "沖縄県中城村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "473588",
+        "name": "沖縄県北大東村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "043028",
+        "name": "宮城県七ヶ宿町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "075647",
+        "name": "福島県飯舘村",
+        "evacuation": true,
+        "emergency": false
+      }
+    ]
+  },
+  "summary": {
+    "total": 1917,
+    "available": 1722,
+    "unavailable": 195,
+    "bothMissing": 195,
+    "evacuationMissing": 10,
+    "emergencyMissing": 28,
+    "evacuationTotal": 1712,
+    "emergencyTotal": 1694
+  }
+}
