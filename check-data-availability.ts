@@ -51,12 +51,32 @@ function isPrefectureOnly(cityName: string): boolean {
 }
 
 /**
- * 全自治体の避難所データの可用性をチェック
+ * データが存在しない自治体用のJSONファイルを生成
+ */
+function createUnavailableJson(
+  code: string,
+  name: string,
+  dataType: 'evacuation' | 'emergency'
+): object {
+  const typeLabel = dataType === 'evacuation' ? '指定避難所' : '緊急避難所';
+  return {
+    type: 'unavailable',
+    code,
+    name,
+    dataType,
+    message: `この自治体の${typeLabel}データは公開されていません。`,
+    note: '政令指定都市の区の場合、市全体としてデータが提供されている可能性があります。'
+  };
+}
+
+/**
+ * 全自治体の避難所データの可用性をチェックし、unavailableファイルを生成
  */
 function checkDataAvailability(
   cityToCodePath: string,
   evacuationDir: string,
-  emergencyDir: string
+  emergencyDir: string,
+  generateFiles: boolean = false
 ): DataAvailability {
   // city-to-code.jsonを読み込む
   const cityToCodeData = fs.readFileSync(cityToCodePath, 'utf-8');
@@ -70,6 +90,7 @@ function checkDataAvailability(
   let availableCount = 0;
   let evacuationTotal = 0;
   let emergencyTotal = 0;
+  let filesGenerated = 0;
 
   // 各自治体について避難所データの存在をチェック
   for (const [cityName, code] of Object.entries(cityToCode)) {
@@ -93,7 +114,7 @@ function checkDataAvailability(
       availableCount++;
     }
 
-    // データが欠けている場合は記録
+    // データが欠けている場合は記録し、ファイルを生成
     if (!hasEvacuation && !hasEmergency) {
       bothMissing.push({
         code,
@@ -101,6 +122,16 @@ function checkDataAvailability(
         evacuation: false,
         emergency: false,
       });
+
+      // unavailableファイルを生成
+      if (generateFiles) {
+        const evacuationJson = createUnavailableJson(code, cityName, 'evacuation');
+        const emergencyJson = createUnavailableJson(code, cityName, 'emergency');
+
+        fs.writeFileSync(evacuationPath, JSON.stringify(evacuationJson, null, 2), 'utf-8');
+        fs.writeFileSync(emergencyPath, JSON.stringify(emergencyJson, null, 2), 'utf-8');
+        filesGenerated += 2;
+      }
     } else if (!hasEvacuation) {
       evacuationMissing.push({
         code,
@@ -108,6 +139,13 @@ function checkDataAvailability(
         evacuation: false,
         emergency: true,
       });
+
+      // unavailableファイルを生成（指定避難所のみ）
+      if (generateFiles) {
+        const evacuationJson = createUnavailableJson(code, cityName, 'evacuation');
+        fs.writeFileSync(evacuationPath, JSON.stringify(evacuationJson, null, 2), 'utf-8');
+        filesGenerated++;
+      }
     } else if (!hasEmergency) {
       emergencyMissing.push({
         code,
@@ -115,7 +153,18 @@ function checkDataAvailability(
         evacuation: true,
         emergency: false,
       });
+
+      // unavailableファイルを生成（緊急避難所のみ）
+      if (generateFiles) {
+        const emergencyJson = createUnavailableJson(code, cityName, 'emergency');
+        fs.writeFileSync(emergencyPath, JSON.stringify(emergencyJson, null, 2), 'utf-8');
+        filesGenerated++;
+      }
     }
+  }
+
+  if (generateFiles && filesGenerated > 0) {
+    console.log(`\nunavailableファイルを${filesGenerated}件生成しました`);
   }
 
   return {
@@ -146,13 +195,25 @@ function main() {
   const emergencyDir = path.join(__dirname, 'docs', 'api', 'v0', 'emergency');
   const outputPath = path.join(__dirname, 'docs', 'api', 'v0', 'data-availability.json');
 
+  // コマンドライン引数をチェック（--generate-files オプション）
+  const generateFiles = process.argv.includes('--generate-files');
+
   console.log('避難所データの可用性をチェックしています...');
   console.log(`city-to-code.json: ${cityToCodePath}`);
   console.log(`evacuation dir: ${evacuationDir}`);
   console.log(`emergency dir: ${emergencyDir}`);
 
-  // データの可用性をチェック
-  const availability = checkDataAvailability(cityToCodePath, evacuationDir, emergencyDir);
+  if (generateFiles) {
+    console.log('\n[オプション] unavailableファイルを生成します');
+  }
+
+  // データの可用性をチェック（オプションでファイル生成）
+  const availability = checkDataAvailability(
+    cityToCodePath,
+    evacuationDir,
+    emergencyDir,
+    generateFiles
+  );
 
   // 結果を表示
   console.log('\n=== チェック結果 ===');
@@ -175,6 +236,11 @@ function main() {
     availability.unavailable.both.slice(0, 5).forEach(city => {
       console.log(`  - ${city.name} (${city.code})`);
     });
+  }
+
+  if (generateFiles) {
+    console.log('\n完了: データが存在しない自治体のJSONファイルを生成しました');
+    console.log('これらのファイルは404エラーの代わりに"unavailable"ステータスを返します');
   }
 }
 
