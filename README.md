@@ -1,6 +1,6 @@
 # Japan Shelter API & GeoJSON分割ツール
 
-全国の自治体について指定避難所と緊急避難所の位置情報を公開するAPIです。
+全国の自治体について指定避難所と緊急避難場所の位置情報を公開するAPIです。
 国土地理院が公開するデータファイルを元として、団体コードごとの個別ファイルとして出力するGeoJSON分割ツールを使ってAPI化しました。
 
 ## APIエンドポイント
@@ -8,7 +8,7 @@
 Japan Shelter APIは、全国の避難所データを団体コード（6桁）ごとに提供します。
 
 **サンプルURL**:
-- 緊急避難所（札幌市）: https://motohasystem.github.io/jp-shelter-api/api/v0/emergency/011002.json
+- 緊急避難場所（札幌市）: https://motohasystem.github.io/jp-shelter-api/api/v0/emergency/011002.json
 - 指定避難所（札幌市）: https://motohasystem.github.io/jp-shelter-api/api/v0/evacuation/011002.json
 
 **エンドポイント形式**:
@@ -16,7 +16,7 @@ Japan Shelter APIは、全国の避難所データを団体コード（6桁）�
 https://motohasystem.github.io/jp-shelter-api/api/v0/{type}/{cityCode}.json
 ```
 
-- `{type}`: `evacuation` (指定避難所) または `emergency` (緊急避難所)
+- `{type}`: `evacuation` (指定避難所) または `emergency` (緊急避難場所)
 - `{cityCode}`: 6桁の団体コード (例: `011002` = 北海道札幌市)
 
 ### データが存在しない場合のレスポンス
@@ -52,11 +52,11 @@ https://motohasystem.github.io/jp-shelter-api/api/v0/{type}/{cityCode}.json
 - **data-availability.json**: 避難所データが存在しない自治体のリスト
   - https://motohasystem.github.io/jp-shelter-api/api/v0/data-availability.json
 
-このAPIは、全国の自治体について指定避難所と緊急避難所のデータの有無をチェックし、以下の情報を返します：
+このAPIは、全国の自治体について指定避難所と緊急避難場所のデータの有無をチェックし、以下の情報を返します：
 
-- **unavailable.both**: 指定避難所・緊急避難所の両方のデータがない自治体
+- **unavailable.both**: 指定避難所・緊急避難場所の両方のデータがない自治体
 - **unavailable.evacuationOnly**: 指定避難所のデータのみがない自治体
-- **unavailable.emergencyOnly**: 緊急避難所のデータのみがない自治体
+- **unavailable.emergencyOnly**: 緊急避難場所のデータのみがない自治体
 - **summary**: 統計情報（総自治体数、データあり/なしの件数など）
 
 データ構造例：
@@ -110,7 +110,7 @@ https://motohasystem.github.io/jp-shelter-api/api/v0/{type}/{cityCode}.json
 処理対象のGeoJSONファイル：
 
 - **mergeFromCity_1.geojson**: 指定避難所データ (Evacuation)
-- **mergeFromCity_2.geojson**: 緊急避難所データ (Emergency Evacuation)
+- **mergeFromCity_2.geojson**: 緊急避難場所データ (Emergency Evacuation)
 
 各ファイルの`features[].properties["都道府県名及び市町村名"]`プロパティを使用して、団体コードに変換し分類します。
 
@@ -249,7 +249,7 @@ node split-geojson.js <入力GeoJSONファイル> city-to-code.json [出力デ�
 # 指定避難所データを処理
 node split-geojson.js mergeFromCity_1.geojson city-to-code.json ./output/evacuation
 
-# 緊急避難所データを処理
+# 緊急避難場所データを処理
 node split-geojson.js mergeFromCity_2.geojson city-to-code.json ./output/emergency
 ```
 
@@ -279,7 +279,7 @@ node check-data-availability.js --generate-files
 `--generate-files` オプションを付けると、データが存在しない自治体用のJSONファイルが生成されます：
 
 - 指定避難所データがない自治体 → `evacuation/{cityCode}.json` に unavailable レスポンス
-- 緊急避難所データがない自治体 → `emergency/{cityCode}.json` に unavailable レスポンス
+- 緊急避難場所データがない自治体 → `emergency/{cityCode}.json` に unavailable レスポンス
 
 これにより、すべての自治体コードでアクセスが可能になり、404エラーの代わりに適切なJSONレスポンスが返るようになります。
 
@@ -299,14 +299,14 @@ output/
 └── unknown.json # 団体コードが見つからないデータ
 ```
 
-### 指定避難所と緊急避難所を別々に処理する場合（推奨）
+### 指定避難所と緊急避難場所を別々に処理する場合（推奨）
 ```
 output/
 ├── evacuation/   # 指定避難所 (Evacuation) - mergeFromCity_1.geojson
 │   ├── 010006.json
 │   ├── 011002.json
 │   └── ...
-└── emergency/    # 緊急避難所 (Emergency Evacuation) - mergeFromCity_2.geojson
+└── emergency/    # 緊急避難場所 (Emergency Evacuation) - mergeFromCity_2.geojson
     ├── 010006.json
     ├── 011002.json
     └── ...
@@ -362,7 +362,7 @@ output/
   - `city-to-code.json`: フルネーム（都道府県名+市区町村名）から団体コードを検索できる逆引きJSON
   - 全シート（通常の市区町村 + 政令指定都市）を処理
 - `check-data-availability.ts` - 避難所データの可用性をチェックするツール
-  - 全自治体について指定避難所と緊急避難所のデータの有無を確認
+  - 全自治体について指定避難所と緊急避難場所のデータの有無を確認
   - データが存在しない自治体のリストをJSON形式で生成
   - `data-availability.json`を`docs/api/v0/`ディレクトリに出力
   - `--generate-files` オプション付きで実行すると、データが存在しない自治体用のunavailableファイルを生成
