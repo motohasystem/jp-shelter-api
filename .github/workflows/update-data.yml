@@ -1,0 +1,173 @@
+name: Update shelter data
+
+on:
+  # 毎月2日 05:00 JST (1日 20:00 UTC) に自動実行
+  schedule:
+    - cron: '0 20 1 * *'
+  # 手動実行も可能
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Download shelter GeoJSON from GSI
+        run: |
+          # 国土地理院 指定緊急避難場所・指定避難所データ
+          # https://www.gsi.go.jp/bousaichiri/hinanbasho.html
+          # ダウンロードサイトの「ダウンロード」ボタンはブラウザ内で
+          # defaultFtpData/geoJSON/ 配下のファイルをZIP化しているだけなので、直接取得する
+          BASE="https://hinanmap.gsi.go.jp/hinanjocp/defaultFtpData/geoJSON"
+          curl -fsSL --retry 3 -A "jp-shelter-api-updater (github.com/motohasystem/jp-shelter-api)" \
+            -o mergeFromCity_1.geojson "$BASE/mergeFromCity_1.geojson"
+          curl -fsSL --retry 3 -A "jp-shelter-api-updater (github.com/motohasystem/jp-shelter-api)" \
+            -o mergeFromCity_2.geojson "$BASE/mergeFromCity_2.geojson"
+
+          # 取得内容がGeoJSONであることを確認（メンテナンス画面等のHTMLを検知）
+          for f in mergeFromCity_1.geojson mergeFromCity_2.geojson; do
+            node -e "
+              const d = JSON.parse(require('fs').readFileSync('$f', 'utf-8'));
+              if (d.type !== 'FeatureCollection' || !Array.isArray(d.features) || d.features.length < 10000) {
+                console.error('$f: 不正なデータです (features: ' + (d.features && d.features.length) + ')');
+                process.exit(1);
+              }
+              console.log('$f: OK (' + d.features.length + ' features, name: ' + d.name + ')');
+            "
+          done
+
+      - name: Download city code master from Soumu
+        run: |
+          # 総務省 全国地方公共団体コード
+          # ExcelのURLは更新ごとに変わるため、ページ先頭の .xls/.xlsx リンクをスクレイピングする
+          # （ページ構成上、最初のExcelリンクが「都道府県コード及び市区町村コード」本体）
+          PAGE="https://www.soumu.go.jp/denshijiti/code.html"
+          XLS_PATH=$(curl -fsSL --retry 3 "$PAGE" | grep -oE 'href="[^"]*\.xlsx?"' | head -1 | sed 's/href="//; s/"//')
+          if [ -z "$XLS_PATH" ]; then
+            echo "総務省ページからExcelリンクを取得できませんでした"; exit 1
+          fi
+          echo "Excel URL: https://www.soumu.go.jp${XLS_PATH}"
+          curl -fsSL --retry 3 -o city-code-master.xlsx "https://www.soumu.go.jp${XLS_PATH}"
+
+      - name: Convert city code master to JSON
+        run: node excel-to-json.js city-code-master.xlsx docs/api/v0/code-to-city.json
+
+      - name: Clear previous data
+        run: |
+          rm -rf docs/api/v0/evacuation docs/api/v0/emergency
+          mkdir -p docs/api/v0/evacuation docs/api/v0/emergency
+
+      - name: Split GeoJSON by city code
+        run: |
+          node split-geojson.js mergeFromCity_1.geojson docs/api/v0/city-to-code.json docs/api/v0/evacuation
+          node split-geojson.js mergeFromCity_2.geojson docs/api/v0/city-to-code.json docs/api/v0/emergency
+
+      - name: Generate availability data and unavailable files
+        run: node check-data-availability.js --generate-files
+
+      - name: Validate output
+        id: validate
+        run: |
+          node -e "
+            const fs = require('fs');
+            const avail = JSON.parse(fs.readFileSync('docs/api/v0/data-availability.json', 'utf-8'));
+            const evac = fs.readdirSync('docs/api/v0/evacuation').filter(f => f.endsWith('.json') && f !== 'unknown.json').length;
+            const emer = fs.readdirSync('docs/api/v0/emergency').filter(f => f.endsWith('.json') && f !== 'unknown.json').length;
+            const total = avail.summary.total;
+            console.log('total:', total, 'evacuation files:', evac, 'emergency files:', emer);
+
+            // Slack通知用に統計をoutputへ書き出す
+            fs.appendFileSync(process.env.GITHUB_OUTPUT,
+              'total=' + total + '\n' +
+              'available=' + avail.summary.available + '\n' +
+              'unavailable=' + avail.summary.unavailable + '\n');
+
+            // 全自治体分のファイルが存在すること（GeoJSON or unavailable）
+            if (evac !== total || emer !== total) {
+              console.error('ファイル数が総自治体数と一致しません'); process.exit(1);
+            }
+            // 自治体数の妥当性（合併等で多少変動するが、極端な減少は取得失敗を疑う）
+            if (total < 1700) {
+              console.error('総自治体数が異常に少ないです: ' + total); process.exit(1);
+            }
+            // データなし自治体が急増していないこと
+            if (avail.summary.unavailable > total * 0.3) {
+              console.error('データなし自治体が3割を超えています: ' + avail.summary.unavailable); process.exit(1);
+            }
+            // サンプル自治体（札幌市）の中身を確認
+            const sample = JSON.parse(fs.readFileSync('docs/api/v0/evacuation/011002.json', 'utf-8'));
+            if (sample.type !== 'FeatureCollection' || sample.features.length === 0) {
+              console.error('サンプル自治体(011002)のデータが不正です'); process.exit(1);
+            }
+            console.log('validation OK');
+          "
+
+      - name: Write last-updated metadata
+        run: |
+          node -e "
+            const fs = require('fs');
+            const meta = {
+              updatedAt: new Date().toISOString(),
+              source: {
+                shelter: 'https://www.gsi.go.jp/bousaichiri/hinanbasho.html',
+                cityCode: 'https://www.soumu.go.jp/denshijiti/code.html'
+              }
+            };
+            fs.writeFileSync('docs/api/v0/last-updated.json', JSON.stringify(meta, null, 2));
+          "
+
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          # last-updated.json のみの変化は「データ更新なし」とみなしてコミットしない
+          if git diff --quiet -- docs/api/v0 ':(exclude)docs/api/v0/last-updated.json' \
+             && [ -z "$(git status --porcelain docs/api/v0 | grep -v last-updated.json)" ]; then
+            echo "データに変更はありません。コミットをスキップします。"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/api/v0
+          git commit -m "避難所データを自動更新 ($(TZ=Asia/Tokyo date +%Y-%m-%d))"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Slack
+        if: always()
+        run: |
+          CHANGED="${{ steps.commit.outputs.changed }}"
+          TOTAL="${{ steps.validate.outputs.total }}"
+          AVAILABLE="${{ steps.validate.outputs.available }}"
+          UNAVAILABLE="${{ steps.validate.outputs.unavailable }}"
+          STATUS="${{ job.status }}"
+
+          if [ "$STATUS" = "success" ] && [ "$CHANGED" = "true" ]; then
+            TEXT="✅ 避難所データ更新: 全${TOTAL}自治体（データあり${AVAILABLE} / なし${UNAVAILABLE}）\n🌐 https://motohasystem.github.io/jp-shelter-api/"
+          elif [ "$STATUS" = "success" ]; then
+            TEXT="📭 避難所データ: 変更なし"
+          else
+            TEXT="❌ 避難所データ更新失敗\n詳細: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          fi
+
+          curl -s -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"text\": \"${TEXT}\"}"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
