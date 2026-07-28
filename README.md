@@ -89,9 +89,18 @@ https://motohasystem.github.io/jp-shelter-api/api/v0/{type}/{cityCode}.json
 
 **注意**: 政令指定都市の区（例：さいたま市西区、千葉市中央区など）は、市全体としてデータが提供されている場合があります。
 
+## データの更新タイミング
+
+本APIのデータは、GitHub Actions（[.github/workflows/update-data.yml](.github/workflows/update-data.yml)）により**毎月2日 05:00 JST に自動更新**されます。国土地理院・総務省の最新公開データを取得し、検証に合格した場合のみ反映されるため、ソース側の更新から最大1ヶ月程度のタイムラグがあります。
+
+- 現在配信中のデータの取得日時は、以下のエンドポイントで確認できます：
+  - https://motohasystem.github.io/jp-shelter-api/api/v0/last-updated.json
+- ソース側に変更がなかった月は何も更新されません（last-updated.jsonは最後にデータが更新された日時を示します）
+- 更新処理の詳細および手動更新の手順は [DATA_UPDATE.md](DATA_UPDATE.md) を参照してください
+
 ## データの出典
 
-このツールは、以下の公的データを使用しています（2025年10月27日時点に取得したデータをもとにしています）。
+このツールは、以下の公的データを使用しています（取得日時は上記の last-updated.json を参照）。
 
 ### 1. 避難所データ
 
