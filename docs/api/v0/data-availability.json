@@ -104,12 +104,6 @@
         "emergency": false
       },
       {
-        "code": "134023",
-        "name": "東京都青ヶ島村",
-        "evacuation": false,
-        "emergency": false
-      },
-      {
         "code": "141011",
         "name": "神奈川県横浜市鶴見区",
         "evacuation": false,
@@ -502,12 +496,6 @@
       {
         "code": "231169",
         "name": "愛知県名古屋市天白区",
-        "evacuation": false,
-        "emergency": false
-      },
-      {
-        "code": "252042",
-        "name": "滋賀県近江八幡市",
         "evacuation": false,
         "emergency": false
       },
@@ -1198,14 +1186,14 @@
         "emergency": true
       },
       {
-        "code": "343684",
-        "name": "広島県安芸太田町",
+        "code": "373877",
+        "name": "香川県綾川町",
         "evacuation": false,
         "emergency": true
       },
       {
-        "code": "011002",
-        "name": "北海道札幌市",
+        "code": "422118",
+        "name": "長崎県五島市",
         "evacuation": false,
         "emergency": true
       },
@@ -1224,12 +1212,6 @@
       {
         "code": "015849",
         "name": "北海道洞爺湖町",
-        "evacuation": false,
-        "emergency": true
-      },
-      {
-        "code": "063649",
-        "name": "山形県真室川町",
         "evacuation": false,
         "emergency": true
       }
@@ -1254,12 +1236,6 @@
         "emergency": false
       },
       {
-        "code": "131148",
-        "name": "東京都中野区",
-        "evacuation": true,
-        "emergency": false
-      },
-      {
         "code": "131229",
         "name": "東京都葛飾区",
         "evacuation": true,
@@ -1278,26 +1254,20 @@
         "emergency": false
       },
       {
+        "code": "134023",
+        "name": "東京都青ヶ島村",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
         "code": "142042",
         "name": "神奈川県鎌倉市",
         "evacuation": true,
         "emergency": false
       },
       {
-        "code": "143626",
-        "name": "神奈川県大井町",
-        "evacuation": true,
-        "emergency": false
-      },
-      {
         "code": "143634",
         "name": "神奈川県松田町",
-        "evacuation": true,
-        "emergency": false
-      },
-      {
-        "code": "155047",
-        "name": "新潟県刈羽村",
         "evacuation": true,
         "emergency": false
       },
@@ -1344,6 +1314,12 @@
         "emergency": false
       },
       {
+        "code": "252042",
+        "name": "滋賀県近江八幡市",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
         "code": "393444",
         "name": "高知県大豊町",
         "evacuation": true,
@@ -1352,12 +1328,6 @@
       {
         "code": "393631",
         "name": "高知県土佐町",
-        "evacuation": true,
-        "emergency": false
-      },
-      {
-        "code": "393649",
-        "name": "高知県大川村",
         "evacuation": true,
         "emergency": false
       },
@@ -1407,12 +1377,12 @@
   },
   "summary": {
     "total": 1917,
-    "available": 1722,
-    "unavailable": 195,
-    "bothMissing": 195,
-    "evacuationMissing": 10,
-    "emergencyMissing": 28,
-    "evacuationTotal": 1712,
-    "emergencyTotal": 1694
+    "available": 1724,
+    "unavailable": 193,
+    "bothMissing": 193,
+    "evacuationMissing": 9,
+    "emergencyMissing": 26,
+    "evacuationTotal": 1715,
+    "emergencyTotal": 1698
   }
 }
