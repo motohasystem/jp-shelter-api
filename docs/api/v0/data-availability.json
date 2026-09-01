@@ -338,18 +338,6 @@
         "emergency": false
       },
       {
-        "code": "153851",
-        "name": "新潟県阿賀町",
-        "evacuation": false,
-        "emergency": false
-      },
-      {
-        "code": "154822",
-        "name": "新潟県津南町",
-        "evacuation": false,
-        "emergency": false
-      },
-      {
         "code": "163210",
         "name": "富山県舟橋村",
         "evacuation": false,
@@ -1162,12 +1150,6 @@
     ],
     "evacuationOnly": [
       {
-        "code": "131199",
-        "name": "東京都板橋区",
-        "evacuation": false,
-        "emergency": true
-      },
-      {
         "code": "133639",
         "name": "東京都新島村",
         "evacuation": false,
@@ -1268,6 +1250,12 @@
       {
         "code": "143634",
         "name": "神奈川県松田町",
+        "evacuation": true,
+        "emergency": false
+      },
+      {
+        "code": "153851",
+        "name": "新潟県阿賀町",
         "evacuation": true,
         "emergency": false
       },
@@ -1377,12 +1365,12 @@
   },
   "summary": {
     "total": 1917,
-    "available": 1724,
-    "unavailable": 193,
-    "bothMissing": 193,
-    "evacuationMissing": 9,
-    "emergencyMissing": 26,
-    "evacuationTotal": 1715,
-    "emergencyTotal": 1698
+    "available": 1726,
+    "unavailable": 191,
+    "bothMissing": 191,
+    "evacuationMissing": 8,
+    "emergencyMissing": 27,
+    "evacuationTotal": 1718,
+    "emergencyTotal": 1699
   }
 }
